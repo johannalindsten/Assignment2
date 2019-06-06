@@ -3,7 +3,7 @@ package Assignment2;
 public class Data {
 
 	double time;
-	final double[] var;
+	double[] var;
 	Cluster label;
 	
 	

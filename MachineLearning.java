@@ -41,7 +41,7 @@ public class MachineLearning {
 		clusters = Classifyer.assignClass(clusters);
 		learningset = Clustering.assignLabels(clusters, learningset);
 		
-		kNN.classifySet(1, learningset, testset, clusters);
+		kNN.classifySet(10, learningset, testset, clusters);
 		
 	}
 	

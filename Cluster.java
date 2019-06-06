@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 public class Cluster {
 
-	double[] clusterCentroid;
 	int id;
-	ArrayList<Data> datapoints;
-	double J;
 	String name;
+
+	ArrayList<Data> datapoints;
+	double[] clusterCentroid;
+	double J;
 	
 	public Cluster(int IDnum, int buses){
 		id = IDnum;

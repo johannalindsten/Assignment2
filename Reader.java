@@ -11,7 +11,7 @@ public class Reader {
 
 	public static ArrayList<Data> createDataset(String datafile, String[][] substations){
 
-		ArrayList<Data> learningset = new ArrayList<Data>();
+		ArrayList<Data> dataset = new ArrayList<Data>();
 		
 		try {
 			FileReader fr = new FileReader(datafile);
@@ -29,8 +29,8 @@ public class Reader {
 				String[] type = param[1].split("_");
 
 			
-				for(int i=0; i<learningset.size(); i++){
-					if(learningset.get(i).time == time){
+				for(int i=0; i<dataset.size(); i++){
+					if(dataset.get(i).time == time){
 						for(int j=0; j<substations.length; j++){
 							
 								
@@ -40,7 +40,7 @@ public class Reader {
 								if(type[1].equals("VOLT")){
 									
 									int index = j*2;
-									learningset.get(i).var[index] = measurement;
+									dataset.get(i).var[index] = measurement;
 
 									saved = true;
 									break;
@@ -49,7 +49,7 @@ public class Reader {
 									
 									
 									int index = (j*2)+1;
-									learningset.get(i).var[index] = measurement;
+									dataset.get(i).var[index] = measurement;
 									
 									saved = true;
 									break;
@@ -61,7 +61,7 @@ public class Reader {
 				}
 				
 				if(saved == false){
-					learningset.add(new Data(time, measurement, type[1], substationID, substations));
+					dataset.add(new Data(time, measurement, type[1], substationID, substations));
 				}
 				
 			}
@@ -74,7 +74,7 @@ public class Reader {
 			System.out.println("IOException");
 		}
 		
-		return learningset;
+		return dataset;
 		
 	}
 	

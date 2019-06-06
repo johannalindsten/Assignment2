@@ -29,9 +29,7 @@ public class StartGUI {
 
 	private JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -50,17 +48,9 @@ public class StartGUI {
 	 */
 	public StartGUI() {
 
-		//LearningSetUploaded = false;
-		//TestSetUploaded = false;
-		//SubstationUploaded = false;
-		
-		//TA BORT SENARE
-		LearningSetUploaded = true;
-		TestSetUploaded = true;
-		SubstationsUploaded = true;
-		LearningSetFilePath = "measurements.csv";
-		TestSetFilePath = "analog_values.csv";
-		SubstationFilePath = "substations.csv";
+		LearningSetUploaded = false;
+		TestSetUploaded = false;
+		SubstationsUploaded = false;
 		
 		program = new MachineLearning();
 		initialize();
@@ -96,11 +86,7 @@ public class StartGUI {
 				fc.setFileFilter(xmlFilter);
 				
 				if(fc.showOpenDialog(btnImportLearn) == JFileChooser.APPROVE_OPTION){
-					//System.out.println("works!" + fc.getSelectedFile());
 					LearningSetFilePath = fc.getSelectedFile().getAbsolutePath();
-					JOptionPane.showMessageDialog(null, "Learning set chosen: " + LearningSetFilePath);
-					//txtpnSSH.setText("SSH file chosen.");
-					//txtpnSSH.setForeground(new Color(0, 128, 0));
 					LearningSetUploaded = true;
 				}else if(fc.showOpenDialog(btnImportLearn) == JFileChooser.CANCEL_OPTION){
 					JOptionPane.showMessageDialog(null, "No file for learning set chosen.");
@@ -124,11 +110,7 @@ public class StartGUI {
 				fc.setFileFilter(xmlFilter);
 				
 				if(fc.showOpenDialog(btnImportLearn) == JFileChooser.APPROVE_OPTION){
-					//System.out.println("works!" + fc.getSelectedFile());
 					TestSetFilePath = fc.getSelectedFile().getAbsolutePath();
-					JOptionPane.showMessageDialog(null, "Test set chosen: " + TestSetFilePath);
-					//txtpnSSH.setText("SSH file chosen.");
-					//txtpnSSH.setForeground(new Color(0, 128, 0));
 					TestSetUploaded = true;
 				}else if(fc.showOpenDialog(btnImportLearn) == JFileChooser.CANCEL_OPTION){
 					JOptionPane.showMessageDialog(null, "No file for test set chosen.");
@@ -152,11 +134,7 @@ public class StartGUI {
 				fc.setFileFilter(xmlFilter);
 				
 				if(fc.showOpenDialog(btnImportLearn) == JFileChooser.APPROVE_OPTION){
-					//System.out.println("works!" + fc.getSelectedFile());
 					SubstationFilePath = fc.getSelectedFile().getAbsolutePath();
-					JOptionPane.showMessageDialog(null, "Substations chosen: " + SubstationFilePath);
-					//txtpnSSH.setText("SSH file chosen.");
-					//txtpnSSH.setForeground(new Color(0, 128, 0));
 					SubstationsUploaded = true;
 				}else if(fc.showOpenDialog(btnImportLearn) == JFileChooser.CANCEL_OPTION){
 					JOptionPane.showMessageDialog(null, "No file for test set chosen.");
@@ -183,7 +161,6 @@ public class StartGUI {
 					JFreeChart chart = MachineLearning.initalChart();
 					JTable table = MachineLearning.initialTable();
 					
-					//System.out.println(x);
 					
 					ResultsGUI frame = new ResultsGUI(chart, table, buses, MachineLearning.substationList);
 					frame.setVisible(true);
